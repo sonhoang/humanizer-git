@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-	<servlet>
+<servlet>
 		<servlet-name>login</servlet-name>
-		<servlet-class>com.cstsolution.sra.AuthenServlet</servlet-class>
+		<servlet-class>org.humanizer.rating.AuthenServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>login</servlet-name>
@@ -12,7 +12,7 @@
 	</welcome-file-list>
     <servlet>
         <servlet-name>list_keyword</servlet-name>
-        <servlet-class>com.cstsolution.sra.ListKeywordServlet</servlet-class>
+        <servlet-class>org.humanizer.rating.ListKeywordServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>list_keyword</servlet-name>
@@ -20,7 +20,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>list_detail</servlet-name>
-        <servlet-class>com.cstsolution.sra.ListDetailServlet</servlet-class>
+        <servlet-class>org.humanizer.rating.ListDetailServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>list_detail</servlet-name>
@@ -28,7 +28,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>rating</servlet-name>
-        <servlet-class>com.cstsolution.sra.RatingServlet</servlet-class>
+        <servlet-class>org.humanizer.rating.RatingServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>rating</servlet-name>
@@ -36,13 +36,17 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>rate</servlet-name>
-        <servlet-class>com.cstsolution.sra.RateServlet</servlet-class>
+        <servlet-class>org.humanizer.rating.RateServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>rate</servlet-name>
         <url-pattern>/rate</url-pattern>
     </servlet-mapping>
-
+    <!-- 
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	 -->
  <servlet>
   <servlet-name>SystemServiceServlet</servlet-name>
   <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
