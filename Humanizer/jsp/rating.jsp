@@ -2,6 +2,8 @@
   <meta http-equiv="content-type" content="text/html" />
   <meta name="author" content="victo" />
   <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.validate.js" type="text/javascript"></script>  
   <title>Rating</title>
 
   <script type="text/javascript">    
@@ -17,7 +19,22 @@
   }     
 
 </script>     
+
 <script type="text/javascript"> 
+	$(function (){
+		$('#rating_form').submit(function () {
+		//alert("123");
+		 sendContactForm();
+		 return false;
+		});	
+	});
+</script>
+
+<script type="text/javascript"> 
+	function sendContactForm(){
+		//alert("submit");
+		
+    }
 	function startEdit(){
 		var show_old_rating = document.getElementById("show_old_rating");
 		show_old_rating.style.display = "none";
@@ -27,6 +44,18 @@
 		show_old_rating.style.display = "block";		
 	}
 </script>
+
+<script type="text/javascript"> 
+	function doSubmit(){
+		var show_old_rating = document.getElementById("show_old_rating");
+		show_old_rating.style.display = "none";
+		var show_old_rating = document.getElementById("note");
+		show_old_rating.style.display = "block";
+		var show_old_rating = document.getElementById("submit");
+		show_old_rating.style.display = "block";		
+	}
+</script>
+
 </head>
 
 <body>
@@ -55,7 +84,7 @@
   
 </div>
 <div class="rating-bottom">
-  <form action="/rate" method="post">
+  <form id="rating_form" name="rating_form" action="/rate" method="post">
   <div class="bottomBody">
     <div > <a style="font-size: 9pt;color: #ffffaa;float: right;text-decoration:none;" href="list_detail?task=<%=task%>&keyword=<%=keyword%>"> <i>Back to list</i> </a> </div>
     <input type="hidden" id="url" name="url" value="<%=url %>" />
@@ -89,7 +118,7 @@
     <input type="hidden" id="type" name="type" value="new_rate" />
     <input type="hidden" id="rating" name="rating" value="3" />
     <input type="text" id="note" name="note" value=""/>
-    <input type="submit" class="btnSubmit" value=" "/>
+    <input type="button" class="btnSubmit" onclick="doSubmit()" value=" "/>
     <%
     }
     %>

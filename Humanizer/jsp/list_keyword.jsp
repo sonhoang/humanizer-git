@@ -16,7 +16,7 @@
   <div class="keyword">Welcome back, <%= session.getAttribute("username") %>. Here by your task details:</div>
   <div class="list-key">
 
-	<table class="for_table">
+	<table>
 		<tr>
 		<th class="for_table">No</th>
 		<th class="for_table">Task</th>
@@ -43,9 +43,9 @@
       %>
 		<tr>
 		<td class="for_table"><%=index %></td>
-		<td class="for_table"> <a href="/list_detail?task=<%=task%>&keyword=<%=keyword%>"><%=title%></a></td>
+		<td class="for_table"> <a href="/list_detail?task=<%=task%>&keyword=<%=keyword%>&task_name=<%=title%>"><%=title%></a></td>
 		<td class="for_table"><%=status %></td>
-		<td class="for_table"><a href="/list_detail?task=<%=task%>&keyword=<%=keyword%>"><%=keyword%></a></td>
+		<td class="for_table"><a href="/list_detail?task=<%=task%>&keyword=<%=keyword%>&task_name=<%=title%>"><%=keyword%></a></td>
 		<td class="for_table"><em> <%=size%> items</em></td>
        </tr>
         <%

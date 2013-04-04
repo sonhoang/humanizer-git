@@ -60,7 +60,7 @@ public class ListDetailServlet extends HttpServlet {
 	}  
   String keyword = req.getParameter("keyword");
   String task = req.getParameter("task");
-  
+  String task_name = req.getParameter("task_name");
   
   //perform get rate list by keyword and task
   StringBuilder sb = new StringBuilder();
@@ -95,7 +95,7 @@ public class ListDetailServlet extends HttpServlet {
   req.setAttribute("data",lst1);
   req.setAttribute("keyword", keyword);
   req.setAttribute("task", task);
-  //req.setAttribute("task_name", rater.getTitle());
+  req.setAttribute("task_name", task_name);
   //req.setAttribute("task_status", rater.getStatus());
   
   RequestDispatcher dispatcher = req.getRequestDispatcher("/list_detail.jsp");

@@ -24,7 +24,8 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 /* Tables still need 'cellspacing="0"' in the markup. */
 table { border-collapse: separate; border-spacing: 0; }
 caption, th, td { text-align: left; font-weight: normal; }
-table, td, th { vertical-align: middle; }
+table, td, th { vertical-align: middle; padding:10 }
+th {background-color: grey;color: white;}
 
 /* Remove possible quote marks (") from <q>, <blockquote>. */
 blockquote:before, blockquote:after, q:before, q:after { content: ""; }
@@ -215,6 +216,9 @@ a#sb_feedback {
 }
 /**************/
 /* ========== Content pagination ========== */
+
+.for_table { border: 1px solid #ccc; };
+
 
 .pagination { margin: auto; width: auto; text-align: left;  }
 .pages { padding-bottom: 25px; }
