@@ -17,6 +17,16 @@
   }     
 
 </script>     
+<script type="text/javascript"> 
+	function startEdit(){
+		var show_old_rating = document.getElementById("show_old_rating");
+		show_old_rating.style.display = "none";
+		var show_old_rating = document.getElementById("note");
+		show_old_rating.style.display = "block";
+		var show_old_rating = document.getElementById("submit");
+		show_old_rating.style.display = "block";		
+	}
+</script>
 </head>
 
 <body>
@@ -27,6 +37,10 @@
     String keyword = (String)request.getAttribute("keyword");    
     String note = (String)request.getAttribute("note");    
     String old_rating = (String)request.getAttribute("relevance");
+	String _rev = (String)request.getAttribute("_rev");
+	String _id = (String)request.getAttribute("_id");
+	String item_id = (String)request.getAttribute("item_id");
+	String rater = (String)request.getAttribute("rater");
     int px = Integer.parseInt((String)request.getAttribute("relevance"));
     if (px == 0){
       px = 3*25;
@@ -47,6 +61,7 @@
     <input type="hidden" id="url" name="url" value="<%=url %>" />
     <input type="hidden" id="task" name="task" value="<%=task %>" />
     <input type="hidden" id="query" name="query" value="<%=keyword %>" />
+	<input type="hidden" id="item_id" name="item_id" value="<%=item_id %>" />
     <ul id="navigation" class='star-rating'>
       <li id="my-rating" class='current-rating' style='width:<%=px %>px;'> Currently 3/5 Stars.</li>
       <li onClick="setStar(1);"><a href='#' title='1 star out of 5' class='one-star'>1</a></li>
@@ -58,13 +73,22 @@
     <%
     if (!old_rating.equals("0")){
     %>
-    <p style="height: 25px;padding-top: 12px;bottom: 10px;font-size: 14pt;color: #ffffaa;"> &nbsp;&nbsp;&nbsp;Already rated (<%=old_rating %>): <i><%=note %></i></p>
+    <p id="show_old_rating" style="height: 25px;padding-top: 12px;bottom: 10px;font-size: 14pt;color: #ffffaa;"> &nbsp;&nbsp;&nbsp;Already rated (<%=old_rating %>): <i><%=note %></i> <a href="#" onclick="startEdit();" style="font-size: 14pt;color: rgb(17, 204, 189);text-decoration:none;"> Edit </a> </p>
+	
+	<input type="hidden" id="type" name="type" value="change_rate" />
+	<input type="hidden" id="_rev" name="_rev" value="<%=_rev %>" />
+	<input type="hidden" id="rater" name="rater" value="<%=rater %>" />
+	<input type="hidden" id="_id" name="_id" value="<%=_id %>" />
+    <input type="hidden" id="rating" name="rating" value="<%=old_rating %>" />
+    <input type="text" id="note"  style="float: left;margin-top: 11px;margin-left: 20px;display:none;" name="note" value="<%=note %>" style="float: left;margin-top: 11px;margin-left: 20px;"/>
+    <input type="submit" style="display:none;" id="submit" class="btnSubmit" value=" "/>
+	
     <%
     }else{
     %>
-    
+    <input type="hidden" id="type" name="type" value="new_rate" />
     <input type="hidden" id="rating" name="rating" value="3" />
-    <input type="text" id="note" name="note" value="" style="float: left;margin-top: 11px;margin-left: 20px;"/>
+    <input type="text" id="note" name="note" value=""/>
     <input type="submit" class="btnSubmit" value=" "/>
     <%
     }

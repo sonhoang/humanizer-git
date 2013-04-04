@@ -23,31 +23,38 @@
       String task = (String) request.getAttribute("task");            
       for (itr=data.iterator(); itr.hasNext(); )
       {
-        String title = "";
-        String desc = "";        
-        if (index == 0) {
-          title = keyword + ", 1st rank";
-          desc = "Top ranking from search engine";
-        } else if (index == 1) {
-          title = keyword + ", 2nd rank";
-          desc = "Top 2 ranking from search engine";
-        } else if (index == 2) {
-          title = keyword + ", 3rd rank";
-          desc = "Top 3 ranking from search engine";
-        } else{
-          title = keyword + ", high rank";
-          desc = "High ranking from search engine";
-        }
-        
-        String link = (String) itr.next();
-        link = link.substring(1);
-        link = link.substring(0, link.length() - 1).trim();
-        String link_show = link;
-        link = "/rating?url=" + link + "&keyword=" + keyword + "&task=" + task;
+		List data2 = (List) itr.next();
+		Iterator itr2 = data2.iterator();				
+		String item_id = (String) itr2.next();	
+		String name = (String) itr2.next();
+		String position = (String) itr2.next();
+		String url = (String) itr2.next();
+		String title2 = (String) itr2.next();	
+		String snippet = (String) itr2.next();	
+		String rating = "";
+		String note = "";
+		if (itr2.hasNext()){
+			rating = (String) itr2.next();
+			note = (String) itr2.next();
+		}
+		
+		String title = "";
+		String desc = "";  		  
+		
+		title = keyword + ", position: " + position;
+		desc = snippet;
+		String link_show = url;
+		String link = "/rating?url=" + url + "&keyword=" + keyword + "&task=" + task + "&item_id=" + item_id;
+	
     %>
       <li class="item">
         <div class="contentItem">
-          <h3 class="titleItem"><a href="<%=link %>"><%=title %></a></h3>
+          <h3 class="titleItem"><a href="<%=link %>"><%=title %></a>
+		  <% 
+			if (!rating.equals("")){
+				out.print("<i style='font-size:13'> Rated: " + rating + " (" + note + ")</i>");
+			}
+		  %></h3>
           <div class="des">
             <div class="linkItem">
               <a href="<%=link %>"><%=link_show %></a>
@@ -57,6 +64,7 @@
         </div>
       </li>
     <%
+		
       index += 1;
       }
     %>
@@ -69,6 +77,7 @@
       <li><a href="#">Legal</a> | </li>
       <li><a target="_blank" id="sb_help" href="#">Help</a> | </li>
       <li><a href="ID=FD,65.1" id="sb_feedback" href="#">Feedback</a></li>
+	   <li><a href="/logout" id="sb_feedback" href="#">Logout</a></li>
     </ul>
     <div class="clear"></div>
   </div>

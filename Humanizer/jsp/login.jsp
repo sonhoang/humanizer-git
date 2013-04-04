@@ -39,7 +39,12 @@
     });
   </script>
 </head>
-
+<%
+	 String username = (String) request.getAttribute("username");  
+	 if (username == null){
+		username = "";
+	 }
+%>
 <body>
 <div class="container">
   <div class="login clearfix" id="login-wrapper" style="margin-top: 8%;">
@@ -49,10 +54,12 @@
         <p class="heading_main">Account Login</p>
         <form id="login-validate" action="/login" method="post">
           <label for="login_name">Login</label>
-          <input type="text" id="login-user" name="login-user" />
+          <input type="text" id="login-user" name="login-user" value="<%=username %>" />
           <label for="login_password">Password</label>
           <input type="password" id="login-password" name="login-password" />
-          <label for="login_remember" class="checkbox"><input type="checkbox" id="login_remember" name="login_remember" /> Remember me</label>
+          <label for="login_remember" class="checkbox"><input type="checkbox" id="login_remember" name="login_remember" /> Remember me 
+		  </label>		  
+		  <label><i><a href="/register.jsp" style="font-style: italic;">Want to be a new member?</a> </i></label>
           <div class="submit_sect">
             <button type="submit" class="btn btn-beoro-3">Login</button>
           </div>

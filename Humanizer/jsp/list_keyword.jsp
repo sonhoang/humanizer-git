@@ -13,58 +13,47 @@
   <!--<div class="row" id="topbar">
     
   </div> -->
-  <div class="keyword">Welcome, <%= session.getAttribute("username") %>. Here by your task details</div>
+  <div class="keyword">Welcome back, <%= session.getAttribute("username") %>. Here by your task details:</div>
   <div class="list-key">
-    <ol>
+
+	<table class="for_table">
+		<tr>
+		<th class="for_table">No</th>
+		<th class="for_table">Task</th>
+		<th class="for_table">Status</th>
+		<th class="for_table">Keyword</th>
+		<th class="for_table">Items</th>
+		</tr>
+	
       <%Iterator itr;%>
       <% List data= (List)request.getAttribute("data");
+	  int index = 0;
       for (itr=data.iterator(); itr.hasNext();) {
         List lst = (List) itr.next();
-        int size = lst.size() - 1;
+        int size = lst.size() - 4;
         Iterator itr2;
         for (itr2=lst.iterator(); itr2.hasNext();) {
           String task = (String) itr2.next();
           String keyword = (String) itr2.next();
+		  String title = (String) itr2.next();
+		  String status = (String) itr2.next();
           keyword = keyword.substring(1);
           keyword = keyword.substring(0, keyword.length() - 1);
+		  index += 1;
       %>
-        <a href="/list_detail?task=<%=task%>&keyword=<%=keyword%>"><%=keyword%></a><em> (<%=size%> Results)</em></li>
+		<tr>
+		<td class="for_table"><%=index %></td>
+		<td class="for_table"> <a href="/list_detail?task=<%=task%>&keyword=<%=keyword%>"><%=title%></a></td>
+		<td class="for_table"><%=status %></td>
+		<td class="for_table"><a href="/list_detail?task=<%=task%>&keyword=<%=keyword%>"><%=keyword%></a></td>
+		<td class="for_table"><em> <%=size%> items</em></td>
+       </tr>
         <%
           break; 
         }%>    
       <%}%>    
-      <!--li><a href="list_detail.html">Android Google</a><em>(140.00 Results)</em></li>
-      <li><a href="list_detail.html">JavaScript </a><em>(250.00 Results)</em></li>
-      <li><a href="list_detail.html">IOS </a><em>(290.00 Results)</em></li>
-      <li><a href="list_detail.html">Vnexpress.net </a><em>(260.000 Results)</em></li>
-      <li><a href="list_detail.html">Thevoice </a><em>(186.00 Results)</em></li>
-      <li><a href="list_detail.html">CSS Design Yorkshire </a><em>(190.00 Results)</em></li>
-      <li><a href="list_detail.html">Adobe Photoshop </a><em>(200.00 Results)</em></li>
-      <li><a href="list_detail.html">CSS Framework </a><em>(5000.00 Results)</em></li>
-      <li><a href="list_detail.html">Dantri.com </a><em>(138.00 Results)</em></li>
-      <li><a href="list_detail.html">Vietnamnet.vn </a><em>(100 Results)</em></li>
-      <li><a href="list_detail.html">Android Google</a><em>(140.00 Results)</em></li>
-      <li><a href="list_detail.html">JavaScript </a><em>(250.00 Results)</em></li>
-      <li><a href="list_detail.html">IOS </a><em>(290.00 Results)</em></li>
-      <li><a href="list_detail.html">Vnexpress.net </a><em>(260.000 Results)</em></li>
-      <li><a href="list_detail.html">Thevoice </a><em>(186.00 Results)</em></li>
-      <li><a href="list_detail.html">CSS Design Yorkshire </a><em>(190.00 Results)</em></li>
-      <li><a href="list_detail.html">Adobe Photoshop </a><em>(200.00 Results)</em></li>
-      <li><a href="list_detail.html">CSS Framework </a><em>(5000.00 Results)</em></li>
-      <li><a href="list_detail.html">Dantri.com </a><em>(138.00 Results)</em></li>
-      <li><a href="list_detail.html">Vietnamnet.vn </a><em>(100 Results)</em></li>
-      <li><a href="list_detail.html">Android Google</a><em>(140.00 Results)</em></li>
-      <li><a href="list_detail.html">JavaScript </a><em>(250.00 Results)</em></li>
-      <li><a href="list_detail.html">IOS </a><em>(290.00 Results)</em></li>
-      <li><a href="list_detail.html">Vnexpress.net </a><em>(260.000 Results)</em></li>
-      <li><a href="list_detail.html">Thevoice </a><em>(186.00 Results)</em></li>
-      <li><a href="list_detail.html">CSS Design Yorkshire </a><em>(190.00 Results)</em></li>
-      <li><a href="list_detail.html">Adobe Photoshop </a><em>(200.00 Results)</em></li>
-      <li><a href="list_detail.html">CSS Framework </a><em>(5000.00 Results)</em></li>
-      <li><a href="list_detail.html">Dantri.com </a><em>(138.00 Results)</em></li>
-      <li><a href="list_detail.html">Vietnamnet.vn </a><em>(100 Results)</em></li-->
-      
-    </ol>
+    </table> 
+
     
   </div>
   <div class="pagination">
@@ -87,6 +76,7 @@
       <li><a href="#">Legal</a> | </li>
       <li><a target="_blank" id="sb_help" href="#">Help</a> | </li>
       <li><a h="ID=FD,65.1" id="sb_feedback" href="#">Feedback</a></li>
+	  <li><a href="/logout" id="sb_feedback" href="#">Logout</a></li>
     </ul>
     <div class="clear"></div>
   </div>
